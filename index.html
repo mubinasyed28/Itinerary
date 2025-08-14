@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexora - Smart Travel Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <img src="/nexora__1_-removebg-preview-removebg-preview.png" alt="Nexora Logo" class="brand-logo" width="100" height="100">
+                    <h1 class="brand-name " style="margin-top: 4px;">Nexora</h1>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2 class="hero-title">Plan Your Perfect Trip with AI</h2>
+                    <p class="hero-subtitle">Get personalized itineraries tailored to your preferences, budget, and travel style. Powered by intelligent recommendations.</p>
+                    <button class="btn btn--primary btn--lg hero-cta" id="planTripBtn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 1L13 7H19L14 11L16 17L10 13L4 17L6 11L1 7H7L10 1Z" fill="currentColor"/>
+                        </svg>
+                        Plan My Trip
+                    </button>
+                </div>
+                <div class="hero-visual">
+                    <div class="travel-cards">
+                        <div class="travel-card travel-card--1">
+                            <div class="card-location">Jaipur, India</div>
+                            <div class="card-days">3 Days</div>
+                        </div>
+                        <div class="travel-card travel-card--2">
+                            <div class="card-location">Kerala, India</div>
+                            <div class="card-days">7 Days</div>
+                        </div>
+                        <div class="travel-card travel-card--3">
+                            <div class="card-location">Goa, India</div>
+                            <div class="card-days">5 Days</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planning Form -->
+    <section class="planning-section hidden" id="planningSection">
+        <div class="container">
+            <div class="planning-content">
+                <div class="section-header">
+                    <h3>Tell us about your dream trip</h3>
+                    <p>We'll create a personalized itinerary just for you</p>
+                </div>
+                
+                <form class="planning-form" id="planningForm">
+                    <!-- Trip Details Section -->
+                    <div class="form-section">
+                        <h3>Trip Details</h3>
+                        
+                        <!-- Destination -->
+                        <div class="form-group">
+                            <label class="form-label" for="destination">Where are you going? *</label>
+                            <input 
+                                type="text" 
+                                id="destination" 
+                                name="destination" 
+                                class="form-control" 
+                                placeholder="Paris, France"
+                                required
+                            >
+                        </div>
+
+                        <!-- Days and People Row -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="days">How many days? *</label>
+                                <input 
+                                    type="number" 
+                                    id="days" 
+                                    name="days" 
+                                    class="form-control" 
+                                    placeholder="7"
+                                    min="1"
+                                    max="30"
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="numberOfPeople">Number of people *</label>
+                                <input 
+                                    type="number" 
+                                    id="numberOfPeople" 
+                                    name="numberOfPeople" 
+                                    class="form-control" 
+                                    placeholder="2"
+                                    min="1"
+                                    max="50"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Travelers and Age Range Row -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="travelers">Travel type *</label>
+                                <select 
+                                    id="travelers" 
+                                    name="travelers" 
+                                    class="form-control"
+                                    required
+                                >
+                                    <option value="">Select travel type</option>
+                                    <option value="Solo">Solo traveler</option>
+                                    <option value="Couple">Couple</option>
+                                    <option value="Family with kids">Family with kids</option>
+                                    <option value="Group of friends">Group of friends</option>
+                                    <option value="Business trip">Business trip</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="ageRange">Age range *</label>
+                                <select 
+                                    id="ageRange" 
+                                    name="ageRange" 
+                                    class="form-control"
+                                    required
+                                >
+                                    <option value="">Select age range</option>
+                                    <option value="0-12">Children (0-12)</option>
+                                    <option value="13-17">Teenagers (13-17)</option>
+                                    <option value="18-30">Young adults (18-30)</option>
+                                    <option value="31-45">Adults (31-45)</option>
+                                    <option value="46-60">Middle-aged (46-60)</option>
+                                    <option value="60+">Seniors (60+)</option>
+                                    <option value="Mixed">Mixed ages</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Budget -->
+                        <div class="form-group">
+                            <label class="form-label" for="budget">What's your budget? *</label>
+                            <input 
+                                type="text" 
+                                id="budget" 
+                                name="budget" 
+                                class="form-control" 
+                                placeholder="$2,000 or ₹50,000 or €1,500"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Travel Preferences Section -->
+                    <div class="form-section">
+                        <h3>Travel Preferences</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="travelStyle">Travel style</label>
+                                <select 
+                                    id="travelStyle" 
+                                    name="travelStyle" 
+                                    class="form-control"
+                                >
+                                    <option value="">Select travel style</option>
+                                    <option value="Relaxed">Relaxed & leisurely</option>
+                                    <option value="Moderate">Moderate pace</option>
+                                    <option value="Packed">Packed & intensive</option>
+                                    <option value="Adventure">Adventure-focused</option>
+                                    <option value="Cultural">Cultural immersion</option>
+                                    <option value="Luxury">Luxury experience</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="accommodation">Accommodation</label>
+                                <select 
+                                    id="accommodation" 
+                                    name="accommodation" 
+                                    class="form-control"
+                                >
+                                    <option value="">Select accommodation</option>
+                                    <option value="Budget">Budget (Hostels, budget hotels)</option>
+                                    <option value="Mid-range">Mid-range (3-star hotels)</option>
+                                    <option value="Luxury">Luxury (4-5 star hotels)</option>
+                                    <option value="Boutique">Boutique hotels</option>
+                                    <option value="Local stays">Local stays (B&B, Airbnb)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="transportation">Getting around</label>
+                            <select 
+                                id="transportation" 
+                                name="transportation" 
+                                class="form-control"
+                            >
+                                <option value="">Select transportation</option>
+                                <option value="Public Transport">Public transport</option>
+                                <option value="Rental Car">Rental car</option>
+                                <option value="Taxi/Rideshare">Taxi & rideshare</option>
+                                <option value="Walking">Walking</option>
+                                <option value="Mixed">Mix of options</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Interests Section -->
+                    <div class="form-section">
+                        <h3>What interests you?</h3>
+                        <div class="interests-grid">
+                            <label class="interest-card">
+                                <input type="checkbox" name="interests" value="Food & Dining">
+                                <span class="checkmark"></span>
+                                <span class="interest-text">Food & Dining</span>
+                            </label>
+                            <label class="interest-card">
+                                <input type="checkbox" name="interests" value="Shopping">
+                                <span class="checkmark"></span>
+                                <span class="interest-text">Shopping</span>
+                            </label>
+                            <label class="interest-card">
+                                <input type="checkbox" name="interests" value="Museums & Culture">
+                                <span class="checkmark"></span>
+                                <span class="interest-text">Museums & Culture</span>
+                            </label>
+                            <label class="interest-card">
+                                <input type="checkbox" name="interests" value="Historical Sites">
+                                <span class="checkmark"></span>
+                                <span class="interest-text">Historical Sites</span>
+                            </label>
+                            <label class="interest-card">
+                                <input type="checkbox" name="interests" value="Nature & Parks">
+                                <span class="checkmark"></span>
+                                <span class="interest-text">Nature & Parks</span>
+                            </label>
+                            <label class="interest-card">
+                                <input type="checkbox" name="interests" value="Nightlife">
+                                <span class="checkmark"></span>
+                                <span class="interest-text">Nightlife</span>
+                            </label>
+                            <label class="interest-card">
+                                <input type="checkbox" name="interests" value="Adventure Sports">
+                                <span class="checkmark"></span>
+                                <span class="interest-text">Adventure Sports</span>
+                            </label>
+                            <label class="interest-card">
+                                <input type="checkbox" name="interests" value="Photography">
+                                <span class="checkmark"></span>
+                                <span class="interest-text">Photography</span>
+                            </label>
+                            <label class="interest-card">
+                                <input type="checkbox" name="interests" value="Local Markets">
+                                <span class="checkmark"></span>
+                                <span class="interest-text">Local Markets</span>
+                            </label>
+                            <label class="interest-card">
+                                <input type="checkbox" name="interests" value="Art & Architecture">
+                                <span class="checkmark"></span>
+                                <span class="interest-text">Art & Architecture</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Avoid Section -->
+                    <div class="form-section">
+                        <h3>Anything to avoid?</h3>
+                        <div class="form-group">
+                            <textarea 
+                                id="avoid" 
+                                name="avoid" 
+                                class="form-control textarea-input" 
+                                rows="3"
+                                placeholder="Tell us about any activities, foods, places, or experiences you'd prefer to avoid..."
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn--outline" id="backToHero">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M8 2L2 8L8 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Back
+                        </button>
+                        <button type="submit" class="btn btn--primary btn--lg">
+                            <svg width="30" height="20" viewBox="0 0 20 20" fill="none" style="margin-right: 8px;"">
+                                <path d="M18 8L22 12L18 16M22 12H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Generate Itinerary
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading Section -->
+    <section class="loading-section hidden" id="loadingSection">
+        <div class="container">
+            <div class="loading-content">
+                <div class="loading-animation">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-globe">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                            <circle cx="40" cy="40" r="38" stroke="var(--color-primary)" stroke-width="2" opacity="0.3"/>
+                            <path d="M40 2C54 2 66 14 66 28C66 42 54 54 40 54C26 54 14 42 14 28C14 14 26 2 40 2Z" stroke="var(--color-primary)" stroke-width="2" opacity="0.6"/>
+                            <path d="M40 26C54 26 66 38 66 52C66 66 54 78 40 78C26 78 14 66 14 52C14 38 26 26 40 26Z" stroke="var(--color-primary)" stroke-width="2" opacity="0.8"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3>Creating Your Perfect Itinerary</h3>
+                <p>Our AI is analyzing your preferences and crafting a personalized travel plan...</p>
+                <div class="loading-steps">
+                    <div class="loading-step loading-step--active">
+                        <div class="step-icon">✓</div>
+                        <span>Analyzing preferences</span>
+                    </div>
+                    <div class="loading-step" id="step2">
+                        <div class="step-icon">⏳</div>
+                        <span>Finding best attractions</span>
+                    </div>
+                    <div class="loading-step" id="step3">
+                        <div class="step-icon">⏳</div>
+                        <span>Optimizing schedule</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section hidden" id="resultsSection">
+        <div class="container">
+            <div class="results-header">
+                <div class="results-title">
+                    <h3>Your Personalized Itinerary</h3>
+                    <div class="results-meta">
+                        <span class="meta-item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M8 2L10 6H14L11 9L12 13L8 11L4 13L5 9L2 6H6L8 2Z" fill="var(--color-primary)"/>
+                            </svg>
+                            <span id="resultDestination">Jaipur, India</span>
+                        </span>
+                        <span class="meta-item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <rect x="3" y="3" width="10" height="10" rx="1" stroke="var(--color-primary)" stroke-width="1.5"/>
+                                <path d="M6 1V3M10 1V3M3 6H13" stroke="var(--color-primary)" stroke-width="1.5"/>
+                            </svg>
+                            <span id="resultDays">3 Days</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="results-actions">
+                    <!-- <button class="btn btn--outline" id="shareItinerary">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M12 6L16 10L12 14M16 10H4" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        Share
+                    </button> -->
+                    <button class="btn btn--secondary" id="printItinerary">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M4 12H2C1.5 12 1 11.5 1 11V6C1 5.5 1.5 5 2 5H14C14.5 5 15 5.5 15 6V11C15 11.5 14.5 12 14 12H12" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M4 8V15H12V8H4Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M4 1H12V5H4V1Z" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        Print
+                    </button>
+                    <button class="btn btn--primary" id="planAnotherTrip">Plan Another Trip</button>
+                </div>
+            </div>
+
+            <div class="profile-summary" id="profileSummary">
+                <div class="profile-item">
+                    <strong>Travelers:</strong> <span id="profileTravelers">Couple</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Budget:</strong> <span id="profileBudget">₹30,000</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Interests:</strong> <span id="profileInterests">Food, Shopping</span>
+                </div>
+                <div class="profile-item">
+                    <strong>Avoid:</strong> <span id="profileAvoid">Hiking</span>
+                </div>
+            </div>
+
+            <div class="itinerary-container" id="itineraryContainer">
+                <!-- Itinerary days will be populated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="nav-brand">
+                        <img src="/nexora__1_-removebg-preview-removebg-preview.png" alt="Nexora Logo" class="brand-logo" width="28" height="28">
+                        <span class="brand-name">Nexora</span>
+                    </div>
+                    <p class="footer-tagline">The Future of Smart Travel</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Product</h4>
+                        <a href="#" target="_blank">Features</a>
+                        <a href="#" target="_blank">Pricing</a>
+                        <a href="#" target="_blank">Mobile App</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <a href="#" target="_blank">About</a>
+                        <a href="#" target="_blank">Careers</a>
+                        <a href="#" target="_blank">Contact</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Support</h4>
+                        <a href="#" target="_blank">Help Center</a>
+                        <a href="#" target="_blank">Privacy Policy</a>
+                        <a href="#" target="_blank">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nexora. All rights reserved. Revolutionizing travel planning with AI.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+# Core Flask dependencies
+Flask==3.0.0
+flask-cors==4.0.0
+
+# AI and ML dependencies
+agno==0.1.0
+mistralai==1.0.0
+
+# Web search and data fetching
+tavily-python==0.3.0
+requests==2.31.0
+
+# Data processing
+typing-extensions==4.8.0
+
+# Production server (optional)
+gunicorn==21.2.0
+waitress==3.0.0
+
+# Development dependencies
+python-dotenv==1.0.0
